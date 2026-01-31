@@ -1,72 +1,62 @@
 "use client";
 
-import * as React from "react";
-import { GripVerticalIcon } from "lucide-react";
-import {
-  PanelGroup,
-  Panel,
-  PanelResizeHandle,
-} from "react-resizable-panels";
-
+import React, { useRef, useState } from "react";
 import { cn } from "./utils";
 
-/* -------------------------------------------------------------------------- */
-/*                               PANEL GROUP                                  */
-/* -------------------------------------------------------------------------- */
-
-function ResizablePanelGroup({
+export function ResizablePanelGroup({
+  children,
   className,
-  ...props
-}: React.ComponentProps<typeof PanelGroup>) {
-  return (
-    <PanelGroup
-      data-slot="resizable-panel-group"
-      className={cn(
-        "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                   PANEL                                    */
-/* -------------------------------------------------------------------------- */
-
-function ResizablePanel(
-  props: React.ComponentProps<typeof Panel>
-) {
-  return <Panel data-slot="resizable-panel" {...props} />;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              RESIZE HANDLE                                 */
-/* -------------------------------------------------------------------------- */
-
-function ResizableHandle({
-  withHandle,
-  className,
-  ...props
-}: React.ComponentProps<typeof PanelResizeHandle> & {
-  withHandle?: boolean;
+}: {
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <PanelResizeHandle
-      data-slot="resizable-handle"
-      className={cn(
-        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
-        className,
-      )}
-      {...props}
-    >
-      {withHandle && (
-        <div className="bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border">
-          <GripVerticalIcon className="size-2.5" />
-        </div>
-      )}
-    </PanelResizeHandle>
+    <div className={cn("flex h-full w-full overflow-hidden", className)}>
+      {children}
+    </div>
   );
 }
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle };
+export function ResizablePanel({
+  children,
+  defaultSize = 300,
+  className,
+}: {
+  children: React.ReactNode;
+  defaultSize?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(defaultSize);
+
+  const startResize = (e: React.MouseEvent) => {
+    const startX = e.clientX;
+    const startWidth = width;
+
+    const onMouseMove = (e: MouseEvent) => {
+      setWidth(startWidth + (e.clientX - startX));
+    };
+
+    const onMouseUp = () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+  };
+
+  return (
+    <div
+      ref={ref}
+      style={{ width }}
+      className={cn("relative h-full shrink-0", className)}
+    >
+      {children}
+      <div
+        onMouseDown={startResize}
+        className="absolute top-0 right-0 h-full w-1 cursor-col-resize bg-border"
+      />
+    </div>
+  );
+}
