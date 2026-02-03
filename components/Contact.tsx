@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, MessageCircle, Instagram } from 'lucide-react';
 
 export function Contact() {
   return (
-    <section id="contacto" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-[--color-cream] to-[--color-beige]">
+    <section id="contacto" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-[color:var(--color-cream)] to-[color:var(--color-beige)]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="mb-6">Contáctanos</h2>
@@ -17,20 +17,20 @@ export function Contact() {
           {/* Contact Info */}
           <div className="space-y-10">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[--color-soft-pink] rounded-full flex items-center justify-center">
-                <Phone className="w-6 h-6 text-[--color-dusty-rose]" />
+              <div className="flex-shrink-0 w-12 h-12 bg-[color:var(--color-soft-pink)] rounded-full flex items-center justify-center">
+                <Phone className="w-6 h-6 text-[color:var(--color-dusty-rose)]" />
               </div>
               <div>
                 <h3 className="mb-1">Teléfono</h3>
-                <a href="tel:+523310767254" className="text-gray-600 hover:text-[--color-dusty-rose] transition-colors">
+                <a href="tel:+523310767254" className="text-gray-600 hover:text-[color:var(--color-dusty-rose)] transition-colors">
                   (33) 1076 7254
                 </a>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[--color-soft-pink] rounded-full flex items-center justify-center">
-                <MessageCircle className="w-6 h-6 text-[--color-dusty-rose]" />
+              <div className="flex-shrink-0 w-12 h-12 bg-[color:var(--color-soft-pink)] rounded-full flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-[color:var(--color-dusty-rose)]" />
               </div>
               <div>
                 <h3 className="mb-1">WhatsApp</h3>
@@ -38,7 +38,7 @@ export function Contact() {
                   href="https://wa.me/523310767254?text=Hola,%20me%20gustaría%20información"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-[--color-dusty-rose] transition-colors"
+                  className="text-gray-600 hover:text-[color:var(--color-dusty-rose)] transition-colors"
                 >
                   Enviar mensaje
                 </a>
@@ -46,8 +46,8 @@ export function Contact() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[--color-soft-pink] rounded-full flex items-center justify-center">
-                <Instagram className="w-6 h-6 text-[--color-dusty-rose]" />
+              <div className="flex-shrink-0 w-12 h-12 bg-[color:var(--color-soft-pink)] rounded-full flex items-center justify-center">
+                <Instagram className="w-6 h-6 text-[color:var(--color-dusty-rose)]" />
               </div>
               <div>
                 <h3 className="mb-1">Instagram</h3>
@@ -56,8 +56,8 @@ export function Contact() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[--color-soft-pink] rounded-full flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-[--color-dusty-rose]" />
+              <div className="flex-shrink-0 w-12 h-12 bg-[color:var(--color-soft-pink)] rounded-full flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-[color:var(--color-dusty-rose)]" />
               </div>
               <div>
                 <h3 className="mb-1">Ubicación</h3>
@@ -67,7 +67,7 @@ export function Contact() {
           </div>
 
           {/* Quick Contact Form */}
-          <div className="bg-gradient-to-br from-[--color-soft-pink] to-[--color-beige] p-10 rounded-2xl shadow-md">
+          <div className="bg-gradient-to-br from-[color:var(--color-soft-pink)] to-[color:var(--color-beige)] p-10 rounded-2xl shadow-md">
             <h3 className="mb-6">Solicita tu Cotización</h3>
             <div className="space-y-4">
               <div>
@@ -75,7 +75,7 @@ export function Contact() {
                 <input
                   type="text"
                   placeholder="Tu nombre"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[--color-dusty-rose]"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-dusty-rose)]"
                 />
               </div>
               <div>
@@ -83,7 +83,7 @@ export function Contact() {
                 <input
                   type="tel"
                   placeholder="Tu teléfono"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[--color-dusty-rose]"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-dusty-rose)]"
                 />
               </div>
               <div>
@@ -91,14 +91,14 @@ export function Contact() {
                 <textarea
                   rows={4}
                   placeholder="Describe tu pedido o evento"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[--color-dusty-rose] resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-dusty-rose)] resize-none"
                 />
               </div>
               <a
                 href="https://wa.me/523310767254?text=Hola,%20me%20gustaría%20solicitar%20una%20cotización"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[--color-dusty-rose] text-white py-3 rounded-full hover:bg-[--color-soft-pink] transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-[color:var(--color-dusty-rose)] text-white py-3 rounded-full hover:bg-[color:var(--color-soft-pink)] transition-colors"
               >
                 <MessageCircle className="w-5 h-5" />
                 Enviar por WhatsApp

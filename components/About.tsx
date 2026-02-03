@@ -4,19 +4,19 @@ import { Heart, Flower2, Sparkles } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="nosotros" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[--color-beige] via-[--color-soft-pink] to-[--color-beige]">
+    <section id="nosotros" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[color:var(--color-beige)] via-[color:var(--color-soft-pink)] to-[color:var(--color-beige)]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="mb-6">Sobre Florería Susu</h2>
-          <p className="text-lg text-[--color-dark-sage] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-[color:var(--color-dark-sage)] max-w-2xl mx-auto leading-relaxed">
             Flores para quien nos hace florecer
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-[--color-soft-pink] rounded-full mb-6">
-              <Heart className="w-8 h-8 text-[--color-dusty-rose]" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[color:var(--color-soft-pink)] rounded-full mb-6">
+              <Heart className="w-8 h-8 text-[color:var(--color-dusty-rose)]" />
             </div>
             <h3 className="mb-3">Hecho con Amor</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -25,8 +25,8 @@ export function About() {
           </div>
 
           <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-[--color-soft-pink] rounded-full mb-6">
-              <Flower2 className="w-8 h-8 text-[--color-dusty-rose]" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[color:var(--color-soft-pink)] rounded-full mb-6">
+              <Flower2 className="w-8 h-8 text-[color:var(--color-dusty-rose)]" />
             </div>
             <h3 className="mb-3">Flores Frescas</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -35,8 +35,8 @@ export function About() {
           </div>
 
           <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-[--color-soft-pink] rounded-full mb-6">
-              <Sparkles className="w-8 h-8 text-[--color-dusty-rose]" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[color:var(--color-soft-pink)] rounded-full mb-6">
+              <Sparkles className="w-8 h-8 text-[color:var(--color-dusty-rose)]" />
             </div>
             <h3 className="mb-3">Eventos Especiales</h3>
             <p className="text-gray-600 leading-relaxed">

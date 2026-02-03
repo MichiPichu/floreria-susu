@@ -1,9 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-
 
 const placeholderImage =
   "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80";
@@ -98,66 +93,21 @@ const products = [
   },
 ];
 
-const categories = ["Todos", "Ramos", "Bodas", "Eventos", "Productos"];
 
-export function Catalog() {
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
-
-  const filteredProducts =
-    selectedCategory === "Todos"
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
-
+export default function CatalogoPage() {
   return (
-    <section
-      id="catalogo"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-[color:var(--color-cream)] to-white"
-    >
+    <main className="pt-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="mb-6 text-3xl font-semibold">
-            Nuestro Catálogo
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Descubre nuestra selección de arreglos florales y productos
-            personalizados.
-          </p>
-        </div>
+        <h1 className="text-4xl font-semibold mb-10 text-center">
+          Catálogo completo
+        </h1>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full transition-colors ${
-                selectedCategory === category
-                  ? "bg-[color:var(--color-dusty-rose)] text-black"
-                  : "bg-[color:var(--color-cream)] text-[color:var(--color-dark-sage)] hover:bg-[color:var(--color-beige)]"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Products Grid (SOLO 8) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.slice(0, 8).map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </div>
-
-        {/* Ver catálogo completo */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/catalogo"
-            className="inline-block rounded-full bg-[color:var(--color-dusty-rose)] px-8 py-3 text-black font-medium hover:opacity-90 transition"
-          >
-            Ver catálogo completo
-          </Link>
-        </div>
       </div>
-    </section>
+    </main>
   );
 }

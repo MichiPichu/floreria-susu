@@ -1,44 +1,30 @@
-import { Header } from "../components/Header";
-import { Hero } from "../components/Hero";
-import { Catalog } from "../components/Catalog";
-import { About } from "../components/About";
-import { Contact } from "../components/Contact";
-import { Footer } from "../components/Footer";
-import { WhatsAppButton } from "../components/WhatsAppButton";
+import { Hero } from "@/components/Hero";
+import { Catalog } from "@/components/Catalog";
+import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   return (
-    <>
-      {/* Header fijo */}
-      <Header />
+    <main className="pt-20">
+      {/* Hero / Inicio */}
+      <section id="inicio">
+        <Hero />
+      </section>
 
-      {/* Contenido principal */}
-      <main>
-        {/* Hero / Inicio */}
-        <section id="inicio">
-          <Hero />
-        </section>
+      {/* Catálogo (solo 8 productos) */}
+      <section id="catalogo">
+        <Catalog />
+      </section>
 
-        {/* Catálogo */}
-        <section id="catalogo">
-          <Catalog />
-        </section>
+      {/* Nosotros */}
+      <section id="nosotros">
+        <About />
+      </section>
 
-        {/* About */}
-        <section id="nosotros">
-          <About />
-        </section> 
-
-        {/* Contacto */}
-        <section id="contacto">
-          <Contact />
-        </section>
-      </main>
-
-      <WhatsAppButton />
-
-      {/* Footer */}
-      <Footer />
-    </>
+      {/* Contacto */}
+      <section id="contacto">
+        <Contact />
+      </section>
+    </main>
   );
 }

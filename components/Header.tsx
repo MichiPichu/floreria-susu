@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
-
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -38,7 +37,6 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
 
           {/* Logo */}
-          {/* <img src="/logo.jpeg" alt="Florería Susu" className="h-16 w-auto" /> */}
           <Link href="/" aria-label="Ir al inicio">
             <img
               src="/logo.jpeg"
@@ -51,13 +49,21 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex gap-8">
-            <button onClick={() => scrollToSection("inicio")} className={navItem}>Inicio</button>
-            {/* <Link href="/">
-              <span className={navItem}>Inicio</span>
-            </Link> */}
-            <button onClick={() => scrollToSection("catalogo")} className={navItem}>Catálogo</button>
-            <button onClick={() => scrollToSection("nosotros")} className={navItem}>Nosotros</button>
-            <button onClick={() => scrollToSection("contacto")} className={navItem}>Contacto</button>
+            <Link href="/" className={navItem}>
+              Inicio
+            </Link>
+
+            <Link href="/catalogo" className={navItem}>
+              Catálogo
+            </Link>
+
+            <button onClick={() => scrollToSection("nosotros")} className={navItem}>
+              Nosotros
+            </button>
+
+            <button onClick={() => scrollToSection("contacto")} className={navItem}>
+              Contacto
+            </button>
           </nav>
 
           {/* Mobile button */}
@@ -72,8 +78,15 @@ export function Header() {
         {/* Mobile nav */}
         {isMenuOpen && (
           <div className="md:hidden flex flex-col gap-4 py-4 border-t border-[color:var(--color-beige)]">
-            <button onClick={() => scrollToSection("inicio")}>Inicio</button>
-            <button onClick={() => scrollToSection("catalogo")}>Catálogo</button>
+    
+            <Link href="/" onClick={() => setIsMenuOpen(false)}>
+              Inicio
+            </Link>
+
+            <Link href="/catalogo" onClick={() => setIsMenuOpen(false)}>
+              Catálogo
+            </Link>
+
             <button onClick={() => scrollToSection("nosotros")}>Nosotros</button>
             <button onClick={() => scrollToSection("contacto")}>Contacto</button>
           </div>
