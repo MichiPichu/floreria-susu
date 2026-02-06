@@ -27,71 +27,88 @@ export function Header() {
   `;
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-sm shadow-md
-      bg-gradient-to-br
-      from-[color:var(--color-soft-pink)]
-      via-[color:var(--color-cream)]
-      to-[color:var(--color-beige)]
-    ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-
-          {/* Logo */}
-          <Link href="/" aria-label="Ir al inicio">
-            <img
-              src="/logo.jpeg"
-              alt="Florería Susu"
-              width={120}
-              height={60}
-              className="cursor-pointer"
-            />
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex gap-8">
-            <Link href="/" className={navItem}>
-              Inicio
+    <>
+      {/* HEADER */}
+      <header className="fixed top-0 w-full z-50 backdrop-blur-sm shadow-md
+        bg-gradient-to-br
+        from-[color:var(--color-soft-pink)]
+        via-[color:var(--color-cream)]
+        to-[color:var(--color-beige)]
+      ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            
+            {/* Logo */}
+            <Link href="/" aria-label="Ir al inicio">
+              <img
+                src="/logo.jpeg"
+                alt="Florería Susu"
+                width={120}
+                height={60}
+                className="cursor-pointer"
+              />
             </Link>
 
-            <Link href="/catalogo" className={navItem}>
-              Catálogo
-            </Link>
+            {/* Desktop nav */}
+            <nav className="hidden md:flex gap-8">
+              <Link href="/" className={navItem}>Inicio</Link>
+              <Link href="/catalogo" className={navItem}>Catálogo</Link>
+              <Link href="/#nosotros" className={navItem}>Nosotros</Link>
+              <Link href="/#contacto" className={navItem}>Contacto</Link>
+            </nav>
 
-            <button onClick={() => scrollToSection("nosotros")} className={navItem}>
-              Nosotros
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden text-[color:var(--color-dark-sage)]"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Abrir menú"
+            >
+              <Menu />
             </button>
+          </div>
+        </div>
+      </header>
 
-            <button onClick={() => scrollToSection("contacto")} className={navItem}>
-              Contacto
-            </button>
-          </nav>
+      {/* OVERLAY */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
 
-          {/* Mobile button */}
+      {/* MOBILE DRAWER */}
+      <aside
+        className={`
+          fixed top-0 right-0 z-50 h-full w-72
+          bg-gradient-to-b
+          from-[color:var(--color-cream)]
+          to-[color:var(--color-soft-pink)]
+          shadow-2xl
+          transform transition-transform duration-300
+          md:hidden
+          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
+        <div className="flex items-center justify-between px-6 h-20 border-b">
+          <span className="font-semibold text-lg text-[color:var(--color-dark-sage)]">
+            Menú
+          </span>
           <button
-            className="md:hidden text-[color:var(--color-dark-sage)]"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Cerrar menú"
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            <X />
           </button>
         </div>
 
-        {/* Mobile nav */}
-        {isMenuOpen && (
-          <div className="md:hidden flex flex-col gap-4 py-4 border-t border-[color:var(--color-beige)]">
-    
-            <Link href="/" onClick={() => setIsMenuOpen(false)}>
-              Inicio
-            </Link>
-
-            <Link href="/catalogo" onClick={() => setIsMenuOpen(false)}>
-              Catálogo
-            </Link>
-
-            <button onClick={() => scrollToSection("nosotros")}>Nosotros</button>
-            <button onClick={() => scrollToSection("contacto")}>Contacto</button>
-          </div>
-        )}
-      </div>
-    </header>
+        <nav className="flex flex-col gap-6 p-6">
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link>
+          <Link href="/catalogo" onClick={() => setIsMenuOpen(false)}>Catálogo</Link>
+          <Link href="/#nosotros" onClick={() => setIsMenuOpen(false)}>Nosotros</Link>
+          <Link href="/#contacto" onClick={() => setIsMenuOpen(false)}>Contacto</Link>
+        </nav>
+      </aside>
+    </>
   );
 }
