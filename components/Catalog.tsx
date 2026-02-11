@@ -1,15 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/app/catalogo/products";
-
-const categories = ["Todos", "Ramos", "Bodas", "Eventos", "Productos"];
+import { products, Product } from "@/app/catalogo/products";
 
 export function Catalog() {
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
-  const [randomProducts, setRandomProducts] = useState<typeof products>([]);
+  const [randomProducts, setRandomProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const shuffled = [...products]
@@ -18,13 +15,6 @@ export function Catalog() {
 
     setRandomProducts(shuffled);
   }, []);
-
-  const filteredProducts =
-    selectedCategory === "Todos"
-      ? randomProducts
-      : randomProducts.filter(
-          (p) => p.category === selectedCategory
-        );
 
   return (
     <section
@@ -39,39 +29,22 @@ export function Catalog() {
             Nuestro Catálogo
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Descubre nuestra selección de arreglos florales y productos personalizados.
+            Descubre algunos de nuestros arreglos más especiales.
           </p>
         </div>
 
-        {/* Filtros */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full transition-colors ${
-                selectedCategory === category
-                  ? "bg-[color:var(--color-dusty-rose)] text-black"
-                  : "bg-[color:var(--color-cream)] text-[color:var(--color-dark-sage)] hover:bg-[color:var(--color-beige)]"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Productos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+        {/* Productos aleatorios */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {randomProducts.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </div>
 
         {/* Botón */}
-        <div className="mt-12 text-center">
+        <div className="mt-16 text-center">
           <Link
             href="/catalogo"
-            className="inline-block rounded-full bg-[color:var(--color-dusty-rose)] px-8 py-3 text-black font-medium hover:opacity-90 transition"
+            className="inline-block rounded-full bg-[color:var(--color-dusty-rose)] px-8 py-3 text-white font-medium hover:opacity-90 transition"
           >
             Ver catálogo completo
           </Link>
