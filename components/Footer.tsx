@@ -20,9 +20,9 @@ export function Footer() {
           {/* Logo */}
           <div>
             <img
-              src="/logo.jpeg"
+              src="/logo.png"
               alt="Florería Susu"
-              className="h-20 w-auto mb-4 transition-transform duration-300 hover:scale-105"
+              className="h-45 w-auto mb-4 transition-transform duration-300 hover:scale-105"
             />
             <p className="text-sm max-w-xs">
               Flores para quien nos hace florecer 🌷

@@ -41,11 +41,11 @@ export function Header() {
             {/* Logo */}
             <Link href="/" aria-label="Ir al inicio">
               <img
-                src="/logo.jpeg"
+                src="/logo.png"
                 alt="Florería Susu"
-                width={120}
-                height={60}
-                className="cursor-pointer"
+                // width={120}
+                // height={60}
+                className="h-29 w-auto object-contain cursor-pointer"
               />
             </Link>
 
